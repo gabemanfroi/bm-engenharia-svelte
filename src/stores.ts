@@ -1,8 +1,12 @@
 import { writable } from 'svelte/store';
-import type { IService } from '$lib/modules/Home/types';
+import type { IProject, IService } from '$lib/modules/Home/types';
 
 export const servicesStore = writable<IService[]>([]);
 
 export const carouselItemsStore = writable([]);
 
-export const selectedCategoryStore = writable('todos');
+export const selectedServicesCategoryStore = writable('todos');
+
+export const projectsStore = writable<IProject[]>([]);
+
+export const selectedProjectsCategoryStore = writable('todos');

@@ -6,6 +6,21 @@ interface StrapiImage {
 	};
 }
 
+export interface IProject {
+	attributes: {
+		title: string;
+		category: string;
+		highlight: StrapiImage;
+		images: StrapiImage[];
+		description: string;
+		slug: string;
+	};
+}
+
+export interface ProjectsResponse {
+	data: IProject[];
+}
+
 export interface ICarouselItem {
 	attributes: {
 		title: string;
