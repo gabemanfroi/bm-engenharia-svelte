@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ToggleIcon from '$lib/components/ToggleIcon.svelte';
+	import ToggleIcon from '$lib/modules/Shared/components/ToggleIcon.svelte';
 
 	export let active;
 

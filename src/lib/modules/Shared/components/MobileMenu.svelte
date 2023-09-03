@@ -1,5 +1,5 @@
 <script lang="ts">
-	import MobileMenuLink from '$lib/components/MenuLink.svelte';
+	import MobileMenuLink from '$lib/modules/Shared/components/MenuLink.svelte';
 
 	export let active: boolean;
 </script>

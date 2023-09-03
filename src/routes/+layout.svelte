@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import Header from '$lib/components/Header.svelte';
+	import Header from '$lib/modules/Shared/components/Header.svelte';
 	import { QueryClientProvider } from '@tanstack/svelte-query';
 
 	import type { LayoutData } from './$types';

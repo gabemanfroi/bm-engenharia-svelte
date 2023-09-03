@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import MobileMenu from '$lib/components/MobileMenu.svelte';
-	import DesktopMenu from '$lib/components/DesktopMenu.svelte';
-	import MobileMenuButton from '$lib/components/MobileMenuButton.svelte';
+	import MobileMenu from '$lib/modules/Shared/components/MobileMenu.svelte';
+	import DesktopMenu from '$lib/modules/Shared/components/DesktopMenu.svelte';
+	import MobileMenuButton from '$lib/modules/Shared/components/MobileMenuButton.svelte';
 
 	let path;
 	let active = false;
