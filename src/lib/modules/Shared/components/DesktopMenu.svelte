@@ -6,7 +6,6 @@
 	<div class="hidden sm:ml-6 sm:block">
 		<ul class="flex space-x-4">
 			<MobileMenuLink href="/" text="Início" />
-			<MobileMenuLink href="/quem-somos" text="Quem Somos" />
 			<MobileMenuLink href="/portfolio" text="Portfólio" />
 			<MobileMenuLink href="/contato" text="Contato" />
 			<MobileMenuLink href="/noticias" text="Notícias" />
