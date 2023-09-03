@@ -1,11 +1,25 @@
-<script>
-	import Service from '$lib/modules/Home/components/Service.svelte';
+<script lang="ts">
+	import SectionGrid from '$lib/modules/Shared/components/containers/SectionGrid.svelte';
+	import type { IService } from '$lib/modules/Home/types';
+	import { servicesStore } from '../../../../stores';
+	import { onDestroy } from 'svelte';
+	import SectionGridCard from '$lib/modules/Shared/components/SectionGridCard.svelte';
 
-	export let services = [];
+	let services: IService[] = [];
+	const unsubscribe = servicesStore.subscribe((value) => {
+		services = value;
+	});
+
+	onDestroy(() => {
+		unsubscribe();
+	});
 </script>
 
-<div class="inline-grid grid-cols-3 gap-4">
+<SectionGrid>
 	{#each services as service}
-		<Service {service} />
+		<SectionGridCard
+			title={service.attributes.title}
+			backgroundImageUrl={service.attributes.background.data.attributes.url}
+		/>
 	{/each}
-</div>
+</SectionGrid>
