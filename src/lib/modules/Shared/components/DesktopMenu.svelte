@@ -1,6 +1,5 @@
 <script>
-	import MenuLink from '$lib/components/MenuLink.svelte';
-	import MobileMenuLink from '$lib/components/MenuLink.svelte';
+	import MobileMenuLink from '$lib/modules/Shared/components/MenuLink.svelte';
 </script>
 
 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-end">
