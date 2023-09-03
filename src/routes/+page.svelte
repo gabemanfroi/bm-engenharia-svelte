@@ -4,8 +4,14 @@
 	import PortfolioSection from '$lib/modules/Home/components/PortfolioSection.svelte';
 	import NewsSection from '$lib/modules/Home/components/NewsSection.svelte';
 	import { createQuery, useQueryClient } from '@tanstack/svelte-query';
-	import { getCarouselItems, getServices } from '$lib/modules/Home/api';
-	import { carouselItemsStore, selectedCategoryStore, servicesStore } from '../stores';
+	import { getCarouselItems, getProjects, getServices } from '$lib/modules/Home/api';
+	import {
+		carouselItemsStore,
+		projectsStore,
+		selectedProjectsCategoryStore,
+		selectedServicesCategoryStore,
+		servicesStore
+	} from '../stores';
 
 	const queryClient = useQueryClient();
 
@@ -20,9 +26,14 @@
 		carouselItemsStore.set(response.data?.data ?? []);
 	});
 
-	selectedCategoryStore.subscribe((value) => {
+	selectedServicesCategoryStore.subscribe((value) => {
 		selectedCategory = value;
 		queryClient.refetchQueries(['services']);
+	});
+
+	selectedProjectsCategoryStore.subscribe((value) => {
+		selectedCategory = value;
+		queryClient.refetchQueries(['projects']);
 	});
 
 	const servicesQuery = createQuery({
@@ -32,6 +43,15 @@
 
 	servicesQuery.subscribe((response) => {
 		servicesStore.set(response.data?.data ?? []);
+	});
+
+	const projectsQuery = createQuery({
+		queryKey: ['projects'],
+		queryFn: getProjects(fetch)
+	});
+
+	projectsQuery.subscribe((response) => {
+		projectsStore.set(response.data?.data ?? []);
 	});
 </script>
 
