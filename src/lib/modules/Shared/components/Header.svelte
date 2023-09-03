@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang='ts'>
 	import { page } from '$app/stores';
 	import MobileMenu from '$lib/modules/Shared/components/MobileMenu.svelte';
 	import DesktopMenu from '$lib/modules/Shared/components/DesktopMenu.svelte';
@@ -12,9 +12,9 @@
 	});
 </script>
 
-<nav class="dark:bg-gray-800 absolute w-screen z-20">
-	<div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-		<div class="relative flex h-16 items-center justify-between">
+<nav class='bg-white fixed w-screen z-20 shadow-lg'>
+	<div class='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
+		<div class='relative flex h-16 items-center justify-between'>
 			<MobileMenuButton bind:active />
 			<DesktopMenu />
 		</div>
