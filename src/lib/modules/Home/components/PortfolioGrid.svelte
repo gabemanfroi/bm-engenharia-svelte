@@ -4,6 +4,7 @@
 	import { projectsStore } from '../../../../stores';
 	import { onDestroy } from 'svelte';
 	import SectionGridCard from '$lib/modules/Shared/components/SectionGridCard.svelte';
+	import { goto } from '$app/navigation';
 
 	let projects: IProject[];
 
@@ -19,8 +20,13 @@
 <SectionGrid>
 	{#each projects as project}
 		<SectionGridCard
+			clickable
 			title={project.attributes.title}
 			backgroundImageUrl={project.attributes.highlight.data.attributes.url}
+			on:click={() => {
+				console.log('clicked');
+				goto(`/portfolio/${project.attributes.slug}`);
+			}}
 		/>
 	{/each}
 </SectionGrid>

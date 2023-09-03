@@ -1,18 +1,25 @@
 <script lang="ts">
-	import { PUBLIC_STRAPI_DOMAIN } from '$env/static/public';
+	import { getBackgroundImageFormattedUrl } from '$lib/modules/Shared/utils/functions';
+	import { createEventDispatcher } from 'svelte';
 
 	export let title: string = '';
 	export let backgroundImageUrl = '';
 
-	const getServiceBackgroundImage = (service) => {
-		return `url('${PUBLIC_STRAPI_DOMAIN}${backgroundImageUrl}') center center / cover`;
+	const dispatch = createEventDispatcher();
+	export let clickable = false;
+
+	const handleClick = () => {
+		if (!clickable) return;
+		dispatch('click');
 	};
 </script>
 
 {#if title && backgroundImageUrl}
 	<div
-		style="background: {getServiceBackgroundImage()} "
-		class="relative min-h-[10rem] rounded service-container"
+		on:click={handleClick}
+		style="background: {getBackgroundImageFormattedUrl(backgroundImageUrl)} "
+		class="relative min-h-[10rem] rounded service-container {$$restProps.class} {clickable &&
+			'cursor-pointer'}"
 	>
 		<div class="absolute bottom-0 left-0 w-full rounded-b p-2 capitalize title-banner text-white">
 			{title}

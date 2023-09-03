@@ -41,3 +41,18 @@ export const getProjects = (fetchFn: typeof fetch): (() => Promise<ServicesRespo
 		return response.json();
 	};
 };
+
+export const getProjectBySlug = (
+	fetchFn: typeof fetch,
+	slug: string
+): (() => Promise<ServicesResponse>) => {
+	return async function () {
+		const response = await fetchFn(`http://localhost:5173/api/portfolio/${slug}`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+		return response.json();
+	};
+};

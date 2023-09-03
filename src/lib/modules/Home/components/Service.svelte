@@ -1,17 +1,15 @@
 <script lang="ts">
 	import type { IService } from '$lib/modules/Home/types';
-	import { PUBLIC_STRAPI_DOMAIN } from '$env/static/public';
+	import { getBackgroundImageFormattedUrl } from '$lib/modules/Shared/utils/functions';
 
 	export let service: IService;
-
-	const getServiceBackgroundImage = (service) => {
-		return `url('${PUBLIC_STRAPI_DOMAIN}${service.attributes.background.data.attributes.url}') center center / cover`;
-	};
 </script>
 
 {#if service}
 	<div
-		style="background: {getServiceBackgroundImage(service)} "
+		style="background: {getBackgroundImageFormattedUrl(
+			service.attributes.background.data.attributes.url
+		)} "
 		class="relative min-h-[10rem] rounded service-container"
 	>
 		<div class="absolute bottom-0 left-0 w-full rounded-b p-2 capitalize title-banner text-white">

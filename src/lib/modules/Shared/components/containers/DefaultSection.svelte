@@ -3,10 +3,12 @@
 	export let subtitle;
 </script>
 
-<section class="w-screen min-h-full p-24 bg-gray-100 drop-shadow-2xl">
+<section
+	class="w-screen max-h-full min-h-full flex flex-col gap-4 p-24 pb-12 bg-gray-100 drop-shadow-2xl"
+>
 	<div class="text-center">
 		<h2 class="text-2xl uppercase">{title}</h2>
-		<h3 class="uppercase">{subtitle}</h3>
+		{#if subtitle}<h3 class="uppercase">{subtitle}</h3>{/if}
 	</div>
 	<slot />
 </section>

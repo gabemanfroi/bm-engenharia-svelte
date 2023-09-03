@@ -1,4 +1,7 @@
-<div class="px-3 bg-white w-full rounded p-4 mt-6 section-card-container flex flex-col gap-6">
+<div
+	class="px-3 bg-white w-full h-full rounded p-4 mt-6 section-card-container flex flex-col gap-6 {$$restProps.class ??
+		''} "
+>
 	<slot />
 </div>
 
