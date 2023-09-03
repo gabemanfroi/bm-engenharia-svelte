@@ -1,27 +1,19 @@
 <script lang="ts">
-	import { createQuery } from '@tanstack/svelte-query';
-	import { getCarouselItems } from '$lib/modules/Home/api';
 	import { browser } from '$app/environment';
 	import type { ICarouselItem } from '$lib/modules/Home/types';
 	import CarouselItem from '$lib/modules/Home/components/CarouselItem.svelte';
 	import Carousel from 'svelte-carousel';
 	import { AngleLeftSolid, AngleRightSolid } from 'flowbite-svelte-icons';
 	import CarouselButton from '$lib/modules/Home/components/CarouselButton.svelte';
+	import { carouselItemsStore } from '../../../../stores';
 
 	let isLoading = false;
 	let error = null;
 	let carouselItems: ICarouselItem[] = [];
 	let carousel;
 
-	const carouselItemsQuery = createQuery({
-		queryKey: ['carouselItems'],
-		queryFn: getCarouselItems
-	});
-
-	carouselItemsQuery.subscribe((result) => {
-		isLoading = result.isLoading;
-		error = result.error;
-		carouselItems = result.data?.data ?? [];
+	const unsubscribe = carouselItemsStore.subscribe((value) => {
+		carouselItems = value;
 	});
 
 	const handleNext = () => {

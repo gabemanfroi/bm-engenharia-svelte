@@ -1,29 +1,24 @@
 <script lang="ts">
-	import { createQuery } from '@tanstack/svelte-query';
-	import { getServices } from '$lib/modules/Home/api';
 	import type { IService } from '$lib/modules/Home/types';
 	import ServicesFilters from '$lib/modules/Home/components/ServicesFilters.svelte';
 	import ServicesGrid from '$lib/modules/Home/components/ServicesGrid.svelte';
+	import { servicesStore } from '../../../../stores';
+	import { onDestroy } from 'svelte';
 
-	let isLoading = false;
-	let error = null;
 	let services: IService[] = [];
 	let categories = [];
+
+	const unsubscribe = servicesStore.subscribe((value) => {
+		services = value;
+		categories =
+			categories.length === 0
+				? [...new Set(value.map((service) => service.attributes.category))]
+				: categories;
+	});
+
+	onDestroy(unsubscribe);
+
 	let selectedCategory = 'Todos';
-
-	const carouselItemsQuery = createQuery({
-		queryKey: ['services'],
-		queryFn: () => getServices(selectedCategory)
-	});
-
-	carouselItemsQuery.subscribe((result) => {
-		isLoading = result.isLoading;
-		error = result.error;
-		services = result.data?.data ?? [];
-		if (categories.length === 0) {
-			categories = [...new Set(services.map((service) => service.attributes.category))];
-		}
-	});
 </script>
 
 <section class="w-screen min-h-[50vh] p-24 bg-gray-100 drop-shadow-2xl">

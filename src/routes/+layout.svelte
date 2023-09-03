@@ -1,19 +1,14 @@
-<script>
+<script lang="ts">
 	import '../app.css';
 	import Header from '$lib/components/Header.svelte';
-	import { QueryClient, QueryClientProvider } from '@tanstack/svelte-query';
-	import { browser } from '$app/environment';
+	import { QueryClientProvider } from '@tanstack/svelte-query';
 
-	const queryClient = new QueryClient({
-		defaultOptions: {
-			queries: {
-				enabled: browser
-			}
-		}
-	});
+	import type { LayoutData } from './$types';
+
+	export let data: LayoutData;
 </script>
 
-<QueryClientProvider client={queryClient}>
+<QueryClientProvider client={data.queryClient}>
 	<Header />
 	<slot />
 </QueryClientProvider>

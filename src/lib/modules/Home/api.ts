@@ -1,31 +1,30 @@
-import { PUBLIC_STRAPI_DOMAIN, PUBLIC_STRAPI_TOKEN } from '$env/static/public';
 import type { CarouselItemResponse, ServicesResponse } from '$lib/modules/Home/types';
+import { selectedCategoryStore } from '../../../stores';
 
-export const getCarouselItems = async (): Promise<CarouselItemResponse> => {
-	const response = await fetch(
-		`${PUBLIC_STRAPI_DOMAIN}/api/bm-engenharia-carousel-items?populate=*`,
-		{
+export const getCarouselItems = (fetchFn: typeof fetch): (() => Promise<CarouselItemResponse>) => {
+	return async function () {
+		const response = await fetchFn(`api/carousel`, {
 			method: 'GET',
 			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${PUBLIC_STRAPI_TOKEN}`
+				'Content-Type': 'application/json'
 			}
-		}
-	);
-	return response.json();
+		});
+		return response.json();
+	};
 };
 
-export const getServices = async (category: string): Promise<ServicesResponse> => {
-	const filters = category !== 'Todos' ? `filters[category][$eq]=${category}` : '';
-	const response = await fetch(
-		`${PUBLIC_STRAPI_DOMAIN}/api/bm-engenharia-services?populate=*&${filters}`,
-		{
+export const getServices = (fetchFn: typeof fetch): (() => Promise<ServicesResponse>) => {
+	return async function () {
+		let category;
+		selectedCategoryStore.subscribe((value) => {
+			category = value;
+		});
+		const response = await fetchFn(`api/services?category=${category}`, {
 			method: 'GET',
 			headers: {
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${PUBLIC_STRAPI_TOKEN}`
+				'Content-Type': 'application/json'
 			}
-		}
-	);
-	return response.json();
+		});
+		return response.json();
+	};
 };

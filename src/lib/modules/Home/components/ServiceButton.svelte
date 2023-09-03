@@ -1,8 +1,5 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
-	import { useQueryClient } from '@tanstack/svelte-query';
-
-	const queryClient = useQueryClient();
 
 	const dispatch = createEventDispatcher();
 
@@ -12,10 +9,9 @@
 
 {#if category}
 	<button
-		class="bg-red-500 py-1 px-3 rounded text-white"
+		class="bg-red-500 py-1 px-3 rounded text-white capitalize"
 		on:click={() => {
 			dispatch('click');
-			queryClient.refetchQueries(['services']);
 		}}>{category}</button
 	>
 {/if}
