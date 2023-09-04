@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang='ts'>
 	import SectionGrid from '$lib/modules/Shared/components/containers/SectionGrid.svelte';
 	import type { IProject } from '$lib/modules/Home/types';
 	import { projectsStore } from '../../../../stores';
@@ -24,7 +24,6 @@
 			title={project.attributes.title}
 			backgroundImageUrl={project.attributes.highlight.data.attributes.url}
 			on:click={() => {
-				console.log('clicked');
 				goto(`/portfolio/${project.attributes.slug}`);
 			}}
 		/>

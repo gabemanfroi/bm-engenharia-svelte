@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang='ts'>
 	import { browser } from '$app/environment';
 	import type { ICarouselItem } from '$lib/modules/Home/types';
 	import CarouselItem from '$lib/modules/Home/components/CarouselItem.svelte';
@@ -27,16 +27,16 @@
 
 {#if carouselItems[0]}
 	{#if browser}
-		<CarouselButton class="ml-6 left-0" on:click={handlePrev}>
-			<AngleLeftSolid size="xl" />
+		<CarouselButton class='ml-6 left-0' on:click={handlePrev}>
+			<AngleLeftSolid size='xl' />
 		</CarouselButton>
-		<Carousel dots={false} arrows={false} particlesToShow={1} bind:this={carousel}>
+		<Carousel dots={false} arrows={false} particlesToShow={1} bind:this={carousel} autoplay>
 			<CarouselItem item={carouselItems[0]} />
 			<CarouselItem item={carouselItems[0]} />
 			<CarouselItem item={carouselItems[0]} />
 		</Carousel>
-		<CarouselButton class="mr-6 right-0" on:click={handleNext}>
-			<AngleRightSolid size="xl" />
+		<CarouselButton class='mr-6 right-0' on:click={handleNext}>
+			<AngleRightSolid size='xl' />
 		</CarouselButton>
 	{/if}
 {/if}

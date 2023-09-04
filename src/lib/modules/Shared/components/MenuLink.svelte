@@ -21,7 +21,7 @@
 <li>
 	<a
 		aria-current={currentPath === href ? 'page' : undefined}
-		class='text-blue-600  hover:text-red-700 block rounded-md px-3 py-2 drop-shadow-md sm:text-md font-medium relative'
+		class=' hover:text-red-700 block rounded-md px-3 py-2 drop-shadow-md sm:text-md font-medium relative before:hidden sm:before:block'
 		{href}>{text}</a
 	>
 </li>
@@ -57,7 +57,7 @@
             width: 100%;
         }
 
-
+        color: rgb(42, 14, 115);;
     }
 
     a:hover {

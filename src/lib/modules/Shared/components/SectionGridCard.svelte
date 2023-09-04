@@ -18,7 +18,7 @@
 	<div
 		on:click={handleClick}
 		style="background: {getBackgroundImageFormattedUrl(backgroundImageUrl)} "
-		class="relative min-h-[10rem] rounded service-container {$$restProps.class} {clickable &&
+		class="relative md:min-h-[15rem] min-h-[10rem] rounded service-container {$$restProps.class} {clickable &&
 			'cursor-pointer'}"
 	>
 		<div class="absolute bottom-0 left-0 w-full rounded-b p-2 capitalize title-banner text-white">

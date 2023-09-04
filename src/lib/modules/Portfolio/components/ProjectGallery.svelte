@@ -3,6 +3,7 @@
 	import { browser } from '$app/environment';
 	import CarouselThumbnails from '$lib/modules/Portfolio/components/CarouselThumbnails.svelte';
 	import { getBackgroundImageFormattedUrl } from '$lib/modules/Shared/utils/functions';
+	import Device from 'svelte-device-info';
 
 	let carousel;
 	let currentPageIndex = 0;
@@ -17,6 +18,7 @@
 <div class="h-full w-full gap-2">
 	{#if browser}
 		<Carousel
+			arrows={!Device.isMobile}
 			bind:this={carousel}
 			autoplay
 			on:pageChange={({ detail: currentPage }) => {

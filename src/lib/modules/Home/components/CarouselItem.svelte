@@ -13,7 +13,7 @@
 	style="
 		 background: {getCarouselItemImage(item)};"
 >
-	<p class="z-50 text-4xl font-bold text-white">
+	<p class="z-50 sm:text-4xl text-2xl font-bold text-white ">
 		{item.attributes.title}
 	</p>
 </div>

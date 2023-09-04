@@ -9,7 +9,8 @@
 
 <button
 	aria-selected={active}
-	class=" bg-red-500 py-1 px-3 rounded text-white capitalize flex-1 sm:flex-initial"
+	class=" bg-red-500 py-1 px-3 rounded text-white capitalize sm:flex-initial
+	  inline-grid place-items-center"
 	on:click={() => {
 		dispatch('click');
 	}}>{category}</button
