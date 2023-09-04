@@ -3,7 +3,6 @@ import { PUBLIC_STRAPI_DOMAIN } from '$env/static/public';
 import { STRAPI_TOKEN } from '$env/static/private';
 
 export const GET: RequestHandler = async () => {
-	console.log(STRAPI_TOKEN);
 	const response = await fetch(
 		`${PUBLIC_STRAPI_DOMAIN}/api/bm-engenharia-carousel-items?populate=*`,
 		{
