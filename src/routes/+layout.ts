@@ -5,6 +5,8 @@ export const load = async () => {
 	const queryClient = new QueryClient({
 		defaultOptions: {
 			queries: {
+				refetchOnWindowFocus: false,
+				staleTime: Infinity,
 				enabled: browser
 			}
 		}
